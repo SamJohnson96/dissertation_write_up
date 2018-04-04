@@ -1,0 +1,379 @@
+%!TeX spellcheck = en-US,en-DE
+\documentclass[a4paper,11pt]{report}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University of Sussex thesis template
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Modification History
+%
+% Based on usthesis.cls by Jonathon Read
+% http://www.cogs.susx.ac.uk/users/jlr24/latex.html
+% Modified by Anthony Smith, Feb 2007
+% Incorporated into single thesis.tex file, Anthony Smith, 30 June 2008
+% Minor alterations to page numbering, AJS, 25 July 2008
+% New alternative hyperref options for print version, AJS, 11 Sep 2008
+% "DRAFT" on header, AJS, 12 Sep 2008
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LINE SPACING
+\newcommand{\linespacing}{1.5}
+\renewcommand{\baselinestretch}{\linespacing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY STYLE
+\usepackage{natbib}
+% \bibliographystyle{plain} for [1], [2] etc.
+\bibliographystyle{apalike}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% OTHER FORMATTING/LAYOUT DECLARATIONS
+% Graphics
+\usepackage{graphicx,color}
+\usepackage{epstopdf}
+\usepackage[british]{babel}
+% The left-hand-side should be 40mm.  The top and bottom margins should be
+% 25mm deep.  The right hand margin should be 20mm.
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=4cm,right=2cm,headsep=10pt]{geometry}
+\flushbottom
+% Pages should be numbered consecutively thorugh the main text.  Page numbers
+% should be located centrally at the top of the page.
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{
+	\fancyhf{}
+	% Add "DRAFT: <today's date>" to header (comment out the following to remove)
+	%\lhead{\textit{DRAFT: \today}}
+	%
+	\chead{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+}
+\pagestyle{plain}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ANY OTHER DECLARATIONS HERE:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HYPERREF
+\usepackage[colorlinks,pagebackref,pdfusetitle,urlcolor=blue,citecolor=blue,linkcolor=blue,bookmarksnumbered,plainpages=false]{hyperref}
+% For print version, use this instead:
+%\usepackage[pdfusetitle,bookmarksnumbered,plainpages=false]{hyperref}
+%\usepackage{backref}
+%\renewcommand{\backrefpagesname}{Cited on}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BEGIN DOCUMENT
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PREAMBLE: roman page numbering i, ii, iii, ...
+\pagenumbering{roman}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% TITLE PAGE: The title page should give the following information:
+%%	(i) the full title of the thesis and the sub-title if any;
+%%	(ii) the full name of the author;
+%%	(iii) the qualification aimed for;
+%%	(iv) the name of the University of Sussex;
+%%	(v) the month and year of submission.
+\thispagestyle{empty}
+\begin{flushright}
+\includegraphics[width=6cm]{uslogo}
+\end{flushright}
+\vskip40mm
+\begin{center}
+% TITLE
+\huge\textbf{Predicting share prices using natural language engineering and machine learning techniques.}
+\vskip2mm
+% SUBTITLE (optional)
+% \LARGE\textit{How it all works}
+\vskip5mm
+% AUTHOR
+\Large\textbf{Samuel Johnson}
+\normalsize
+\end{center}
+\vfill
+\begin{flushleft}
+\large
+% QUALIFICATION
+University of Sussex	\\
+% DATE OF SUBMISSION
+May	 2018
+\end{flushleft}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DECLARATIONS
+\chapter*{Declaration}
+This report is submitted as part requirement for the degree of Computer Science at the University of Sussex. It is the product of my own labour except where indicated in the text. The report may be freely copied and distributed provided the source is acknowledged
+
+% ADDITIONAL DECLARATIONS HERE (IF ANY)
+
+\vskip5mm
+Signature:
+\vskip20mm
+% AUTHOR
+Samuel Johnson
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ACKNOWLEDGEMENTS
+\chapter*{Acknowledgements}
+\renewcommand{\baselinestretch}{\linespacing}
+\small\normalsize
+% ACKNOWLEDGEMENTS HERE:
+Bill Keller\\
+Dad\\
+Mum\\
+Robert\\
+Emily\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SUMMARY PAGE
+\thispagestyle{empty}
+\newpage
+\null\vskip10mm
+\begin{center}
+\large
+\underline{UNIVERSITY OF SUSSEX}
+\vskip20mm
+% AUTHOR, QUALIFICATION
+\textsc{Samuel Johnson}
+\vskip20mm
+% TITLE
+\underline{\textsc{Predicting share prices using natural language engineering and machine learning techniques}}
+\vskip0mm
+% SUBTITLE (optional)
+% \underline{\textsc{How it all works}}
+\vskip20mm
+\underline{\textsc{Summary}}
+\vskip2mm
+\end{center}
+% Change line spacing
+\renewcommand{\baselinestretch}{1.0}
+\small\normalsize
+% SUMMARY HERE (300 word limit for most subjects):
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLE OF CONTENTS, LISTS OF TABLES & FIGURES
+\newpage
+\pdfbookmark[0]{Contents}{contents_bookmark}
+\tableofcontents
+\listoftables
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoffigures
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MAIN THESIS TEXT: arabic page numbering 1, 2, 3, ...
+\newpage
+\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%-----------------------------------------------------
+% Chapter: Introduction
+%-----------------------------------------------------
+
+\chapter{Introduction}
+\label{chap:intro}
+
+Data mining and natural language processing are some of the fastest growing fields in computer science. This is a result of many factors, the most notable being the emergence of the world wide web.  Consequently, millions of interconnected documents can be viewed and shared by 3.2 billion people. This continuous stream of information provides one of the largest and diverse data sets to mine and harvest information from. Another important factor is the investment that commercial companies are making to see how they can exploit large data sets to their advantage. An example of this is extracting and analysing customer opinions about a given product found on the web. Using this information, they could improve their product while gaining a better understanding of their customer's needs.
+
+One particular sector that is investing resources in data mining and natural language processing is the financial sector. Brokerage firms and investors are spending their time and money into harvesting a range of data. This is with the aim that the data will aid them in making better decisions when buying or selling shares.  The type of data collected can range from financial data to textual information from websites. Financial data is used to help make predictions and spot patterns in the market that have occurred before. These can be found using statistical analysis or running simulations. Textual information can be useful to discover consumer trends and opinions. One method to achieve this is through scraping HTML documents from microblog sites such as Twitter. Opinions and information can be extracted in large quantities through natural language processing. This is useful for brokers due to consumer opinion having influence over whether a share is seen as bullish or bearish in the market. Another reason behind the interest in both these fields is the speed at which computers can analyse data. On average, adults read 250-300 words per minute whereas a computer can download and analyse data at speed magnitudes faster. This processing power can provide real informational advantages when making decisions on investments.
+
+One possible dataset that could be used by brokers to give an indication of stock performance is digital news articles. Major news organisations such as "The New York Times" and "The Wall Street Journal" release on average over 200 stories and videos a day. Most of this content contains well written factual information and presents knowledgeable opinions. While there has been research on using financial based news stories, there hasn't been many studies that have looked at the value of other typed articles. This lack of knowledge inspires research and development into testing the following hypothesis:
+
+\fbox{\begin{minipage}{15em}
+Hypothesis:
+News articles produced by popular mainstream news sites correlate with the performance of a company's share value.
+\end{minipage}}
+
+News articles produced by popular mainstream news sites correlate with the performance of a company's share value. Testing this hypothesis will involve a series of steps. The first being scraping articles from news sites. The second involves preprocessing these articles using natural language processing techniques. Third, using a series of trained machine learning algorithms, classify the sentiment of an article (positive or negative). Fourth, Using these classifications as predictions monitor whether they're correct or not using current real-time share prices. Fifth, profit.
+
+- Need to needle down to the fact only going to be using technology news and apple / facebook / technology sector.
+
+%-----------------------------------------------------
+% Chapter: Ethical Considerations
+%-----------------------------------------------------
+\chapter{Ethical Considerations}
+\label{chap:ethical-con}
+
+%-----------------------------------------------------
+% Chapter: Background
+%-----------------------------------------------------
+\chapter{Background}
+\label{chap:background}
+
+In this section, the abstract problem of sentiment anaylsis will be discussed alongside exisiting studies that relate to this project.
+
+\subsection{The problem with Sentiment Analysis}
+Before advancing, it is sensible to discuss what the task of sentiment analysis involves in further detail.
+
+Sentiment analysis, also called opinion mining, is the field of study that analyses people’s opinions, sentiments, evaluations, appraisals, attitudes, and emotions towards entities such as products, services, organizations, individuals, issues, events, topics, and their attributes.
+
+ The definition of an opinion can be defined as the following quintuple:
+
+In the context of this experiment, sentiment analysis will be used to classify whether opinions found in digital articles are positive or negative towards companies belonging to the 'Fortune 500' list. This classification will then be used to determine whether those companies share prices will rise or fall.
+
+\subsection{Existing Studies}
+
+Examples of studies related to this project include research published by Bar-Haim and Feldman.  Bar-Haim and Feldman attempted to identify expert investors and collect the content of their microblogs where they would share their knowledge. The aim of scraping these blogs was to see if they could make better predictions on the value of a company using this expert dataset rather than the whole bloated data set available to them. This is similar to this projects experiment with the high-level idea of scraping and analysing textual information with the hope of making accurate predictions of the value of a companies share.  The results concluded that the expert opinions did see a rise in accuracy in judging a companies value. More recently there has been research papers published based on the same topic of using sentiment analysis on news articles written by Joshi Kalyani, H. N. Bharathi and Rao Jyothi.  The basis of their experiment was collecting years of financial news articles which focus on the company Apple. Using these articles they investigated the correlation between the sentiment of articles and the value of Apple stock.  This is similar to what this study hopes to achieve. However, more general news articles will be scraped rather than focusing on just financial news. The conclusions of this study were inconclusive with more attention being given to how articles were classified than reviewing correlation.
+
+An example of where a study has used GDELT can be found here: https://arxiv.org/pdf/1604.03647.pdf. Yihong Yuan wanted 'to model the image of China in mass media, specifically, how China has related to the rest of the world'. Yuan discusses throughout this paper the benefits of GDELT as a service. Yuan disccuses how they `'demonstrated the powerfulness of applying GDELT and big data techniques to investigate informative patterns'. This is encouraging to hear when going to be using GDELT within the experiment to train classifiying algorithms.
+
+
+%-----------------------------------------------------
+% Chapter: Requirement Analysis
+%-----------------------------------------------------
+\chapter{Requirement Analysis}
+\label{chap:requirement-anal}
+
+The requirement analysis stage of a project is important as it presents clear achievable goals and reduces the risk of not delivering during implementation and the design of the project. Within this chapter, I will define both functional and nonfunctional requirements of the research stage. The research stage being the implementation of the pipeline that would test my hypothesis. Also discussed is the requirements created for the application stage of the project. This takes the form of the web platform that was created to illustrate the pipelines predictions and results.
+
+\section{Functional Requirements}
+
+Functional requirements refer to what the product should be able to do and what functionality it should provide
+
+\subsection {Research requirements}
+\begin{itemize}
+  \item Implement methods to scrape HTML files found on the Internet
+  \item Implement methods to parse through each HTML page that has been downloaded and extract their textual data.
+	\item Preprocess each parsed HTML file into a readable format for the computer to understand.
+	\item Implement a topic classifier to classify whether an article is talking about Apple / Facebook or the Technology Sector
+	\item Implement multiple machine learning models to extract a sentiment from a given preprocessed article
+	\item Automate analysis of the sentiments collected from the HTML documents when compared against the value of shares
+\end{itemize}
+
+\subsection {Application requirements}
+\begin{itemize}
+  \item Create a platform which displays the share behaviour predictions created by the research stage.
+	\item Create a platform which illustrates the behaviour of the Apple, Facebook and Technology share prices.
+	\item Create a platform that allows users to test each machine learning model developed in the research stage in classifying sentiment.
+\end{itemize}
+
+For integrity throughout the project, we considered
+Adjusted Close price as everyday stock price
+
+\section{Nonfunctional requirements}
+Nonfunctional requirements refer to how a system should behave and how the functional requirements should be implemented.
+
+\subsection{Research requirements}
+\begin{itemize}
+	\item Scrape HTML page at a regular time interval
+  \item Should be able to handle a lot of articles at once.
+	\item Have new articles scraped and analysed at a fast speed.
+	\item Track the behaviour of Facebook / Apple / Technology value of a series of time intervals to be able to track changes across it all.
+
+\subsection{Application requirements}
+\begin{itemize}
+	\item The platform should be responsive in design
+	\item The platform should have a interface which can be easily understood and used
+%-----------------------------------------------------
+% Chapter: Project Plan
+%-----------------------------------------------------
+\chapter{Project Plan}
+\label{chap:project-plan}
+
+%-----------------------------------------------------
+% Chapter: Implementation
+%-----------------------------------------------------
+\chapter{Implementation}
+\label{chap:implementation}
+
+\section{Pipeline}
+
+\subsection{Web Scraping}
+
+\subsection{GDELT}
+
+\subsection{Classifier API}
+
+\subsection{Models}
+\subsubsection{K Nearest Neigbors}
+\subsubsection{Support Vector Machine}
+\subsubsection{Linear Perceptron}
+\subsubsection{Extra Trees Classifier}
+\subsubsection{Naive Bayes Classifier}
+
+\section{Website}
+%-----------------------------------------------------
+% Chapter: Results
+%-----------------------------------------------------
+\chapter{Results}
+\label{chap:results}
+
+%-----------------------------------------------------
+% Chapter: Evaluation
+%-----------------------------------------------------
+\chapter{Evaluation}
+\label{chap:evaluation}
+\section{Possible Improvements}
+
+%-----------------------------------------------------
+% Chapter: Conclusion
+%-----------------------------------------------------
+\chapter{Conclusion}
+\label{chap:conclusion}
+
+\subsection{Further work}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAPHY
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{bib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START APPENDICES
+\appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%-----------------------------------------------------
+% Appendix: Code
+%-----------------------------------------------------
+\chapter{Code}
+\label{app:code}
+
+\begin{verbatim}
+10 PRINT "HELLO WORLD"
+\end{verbatim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END DOCUMENT
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
