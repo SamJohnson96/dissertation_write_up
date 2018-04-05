@@ -36,6 +36,7 @@
 % OTHER FORMATTING/LAYOUT DECLARATIONS
 % Graphics
 \usepackage{graphicx,color}
+\usepackage{csquotes}
 \usepackage{epstopdf}
 \usepackage[british]{babel}
 % The left-hand-side should be 40mm.  The top and bottom margins should be
@@ -201,29 +202,32 @@ Emily\\
 %-----------------------------------------------------
 % Chapter: Introduction
 %-----------------------------------------------------
-
 \chapter{Introduction}
 \label{chap:intro}
 
-Data mining and natural language processing are some of the fastest growing fields in computer science. This is a result of many factors, the most notable being the emergence of the world wide web.  Consequently, millions of interconnected documents can be viewed and shared by 3.2 billion people. This continuous stream of information provides one of the largest and diverse data sets to mine and harvest information from. Another important factor is the investment that commercial companies are making to see how they can exploit large data sets to their advantage. An example of this is extracting and analysing customer opinions about a given product found on the web. Using this information, they could improve their product while gaining a better understanding of their customer's needs.
+Data mining and natural language processing are some of the fastest growing fields in computer science. This is a result of many factors, the most notable being the emergence of the world wide web.  Consequently, millions of interconnected documents can be viewed and shared by 3.2 billion people. This continuous stream of information provides one of the largest and diverse data sets to mine and harvest information from. Another factor is the investment that commercial companies are making to see how they can exploit large data sets to their advantage. An example of this is mining and extracting customer opinions about a given product found on the web. Using this information could lead to improvements in a company's product and also give a better understanding of their customer's needs.
 
-One particular sector that is investing resources in data mining and natural language processing is the financial sector. Brokerage firms and investors are spending their time and money into harvesting a range of data. This is with the aim that the data will aid them in making better decisions when buying or selling shares.  The type of data collected can range from financial data to textual information from websites. Financial data is used to help make predictions and spot patterns in the market that have occurred before. These can be found using statistical analysis or running simulations. Textual information can be useful to discover consumer trends and opinions. One method to achieve this is through scraping HTML documents from microblog sites such as Twitter. Opinions and information can be extracted in large quantities through natural language processing. This is useful for brokers due to consumer opinion having influence over whether a share is seen as bullish or bearish in the market. Another reason behind the interest in both these fields is the speed at which computers can analyse data. On average, adults read 250-300 words per minute whereas a computer can download and analyse data at speed magnitudes faster. This processing power can provide real informational advantages when making decisions on investments.
+One sector that is investing resources in data mining and natural language processing is the financial sector. Brokerage firms and investors are spending their time and money into harvesting a range of data. This is with the aim that the data will aid them in making better decisions when buying or selling shares.  The type of data collected can range from statistical financial data to textual information from the web. Financial data is used to help make predictions and spot patterns in the market that have occurred before. These patterns can be found using statistical analysis or running simulations. Textual information can be useful to discover consumer trends and opinions. One method to achieve this is through scraping HTML documents from microblog sites such as Twitter. Opinions and information can be extracted in quantities through Natural Language Processing (NLP). This is useful for brokers due to consumer opinion having influence over whether a share is seen as bullish or bearish in the market. Another reason behind the interest in both these fields is the speed at which computers can analyse data. On average, adults read 250-300 words per minute whereas a computer can download and analyse data at speed magnitudes faster. This processing power can provide real informational advantages when making decisions on investments.
 
-One possible dataset that could be used by brokers to give an indication of stock performance is digital news articles. Major news organisations such as "The New York Times" and "The Wall Street Journal" release on average over 200 stories and videos a day. Most of this content contains well written factual information and presents knowledgeable opinions. While there has been research on using financial based news stories, there hasn't been many studies that have looked at the value of other typed articles. This lack of knowledge inspires research and development into testing the following hypothesis:
+One possible dataset that could be used by brokers to give an indication of stock performance is digital news articles. Major news organisations such as "The New York Times" and "The Wall Street Journal" release on average over 200 stories and videos a day. Most of this content contains well written factual information and presents knowledgeable opinions. While there has been research on using financial based news stories, there has not been many studies that have investigated the value of other categorised articles. This lack of knowledge inspires research and development into testing the following hypothesis:\\
 
-\fbox{\begin{minipage}{15em}
-Hypothesis:
-News articles produced by popular mainstream news sites correlate with the performance of a company's share value.
-\end{minipage}}
+\noindent\fbox{%
+    \parbox{\textwidth}{%
+        \textbf{Hypothesis:}\\
+        The sentiment of news articles produced by mainstream news based on a given company correlates with the performance of that given company's share value.
+    }%
+}
 
-News articles produced by popular mainstream news sites correlate with the performance of a company's share value. Testing this hypothesis will involve a series of steps. The first being scraping articles from news sites. The second involves preprocessing these articles using natural language processing techniques. Third, using a series of trained machine learning algorithms, classify the sentiment of an article (positive or negative). Fourth, Using these classifications as predictions monitor whether they're correct or not using current real-time share prices. Fifth, profit.
+\clearpage
 
-- Need to needle down to the fact only going to be using technology news and apple / facebook / technology sector.
+To test this hypothesis, this experiment will be focusing on following the value of two highly valued companies, Apple and Facebook. This is due to them having a large media presence and having articles written about them on a regular basis. Alongside this, articles that are written about technology and other technology companies will be collected. This is to see if a  correlation can be found between the general sentiment of the technology sector and the markets value.
+
+The experiment has two main phases, the first being performing sentiment analysis on newly scraped articles. The second is using statistical analysis to mark whether a given positive or negative sentiment correlates with a shares value. Alongside the experiment, a web platform has also been produced to display the predictions made by the sentiment analysis stage. For definitions of terms, you can reference the Nomenclature found in the appendix.
 
 %-----------------------------------------------------
 % Chapter: Ethical Considerations
 %-----------------------------------------------------
-\chapter{Ethical Considerations}
+\chapter{Ethical considerations}
 \label{chap:ethical-con}
 
 %-----------------------------------------------------
@@ -232,83 +236,120 @@ News articles produced by popular mainstream news sites correlate with the perfo
 \chapter{Background}
 \label{chap:background}
 
-In this section, the abstract problem of sentiment anaylsis will be discussed alongside exisiting studies that relate to this project.
+In this section, the abstract problem of sentiment analysis will be discussed alongside existing studies that relate to this project.
 
-\subsection{The problem with Sentiment Analysis}
-Before advancing, it is sensible to discuss what the task of sentiment analysis involves in further detail.
+\subsection{The abstract problem of sentiment anaylsis}
+Before advancing, it is sensible to discuss what the task of sentiment analysis involves in further detail. Bing Lui describes in detail the abstract problem of sentiment analysis as:
 
+\begin{displayquote}
 Sentiment analysis, also called opinion mining, is the field of study that analyses people’s opinions, sentiments, evaluations, appraisals, attitudes, and emotions towards entities such as products, services, organizations, individuals, issues, events, topics, and their attributes.
+\end{displayquote}
 
- The definition of an opinion can be defined as the following quintuple:
 
-In the context of this experiment, sentiment analysis will be used to classify whether opinions found in digital articles are positive or negative towards companies belonging to the 'Fortune 500' list. This classification will then be used to determine whether those companies share prices will rise or fall.
+To further this explanation, the definition of an opinion can be defined as the following quintuple:
 
-\subsection{Existing Studies}
+\\\[Opinion (e_i, a_i_j, s_i_j_k_l, h_k, t_l)\]
 
-Examples of studies related to this project include research published by Bar-Haim and Feldman.  Bar-Haim and Feldman attempted to identify expert investors and collect the content of their microblogs where they would share their knowledge. The aim of scraping these blogs was to see if they could make better predictions on the value of a company using this expert dataset rather than the whole bloated data set available to them. This is similar to this projects experiment with the high-level idea of scraping and analysing textual information with the hope of making accurate predictions of the value of a companies share.  The results concluded that the expert opinions did see a rise in accuracy in judging a companies value. More recently there has been research papers published based on the same topic of using sentiment analysis on news articles written by Joshi Kalyani, H. N. Bharathi and Rao Jyothi.  The basis of their experiment was collecting years of financial news articles which focus on the company Apple. Using these articles they investigated the correlation between the sentiment of articles and the value of Apple stock.  This is similar to what this study hopes to achieve. However, more general news articles will be scraped rather than focusing on just financial news. The conclusions of this study were inconclusive with more attention being given to how articles were classified than reviewing correlation.
+In table \ref{table:sentiment}, an explanation has been provided to each component on how it relates to this experiment.
 
-An example of where a study has used GDELT can be found here: https://arxiv.org/pdf/1604.03647.pdf. Yihong Yuan wanted 'to model the image of China in mass media, specifically, how China has related to the rest of the world'. Yuan discusses throughout this paper the benefits of GDELT as a service. Yuan disccuses how they `'demonstrated the powerfulness of applying GDELT and big data techniques to investigate informative patterns'. This is encouraging to hear when going to be using GDELT within the experiment to train classifiying algorithms.
+\begin{table}[h!]
+\centering
+\caption{Abstraction of an opinion}
+\label{table:sentiment}
+\begin{tabular}{|l|l|}
+\hline
+\[e_i\] & \begin{tabular}[c]{@{}l@{}}\(e_i\) is the entity that the news article is focusing on whether it is Apple, \\Facebook or the the subject of technology.\end{tabular} \\ \hline
+\[a_i_j\] & \begin{tabular}[c]{@{}l@{}}\(a_i_j\) refers to the aspect of \(e_i\). Aspect refers to a particular part \\ or feature of the entity e.g. An article about the management \\ at the company Apple would translate to Apple being the entity \\ and the management being the aspect the article is referring to.\end{tabular} \\ \hline
+\[s_i_j_k_l\] & \begin{tabular}[c]{@{}l@{}}\(s_i_j_k_l\) refers to the sentiment of this aspect, in the context of this \\ project, it will output a positive or negative sentiment.\end{tabular} \\ \hline
+\[h_k\] & \begin{tabular}[c]{@{}l@{}}\(h_k\) is the opinion holder, in the context of this project, it is referring \\ to the news organisation that the article has been scraped the article from.\end{tabular} \\ \hline
+\[t_l\] & \begin{tabular}[c]{@{}l@{}}\(t_l\) is the time frame of the opinion. Opinions can change rapidly, \\ especially in the stock market. It will be important to get the \\ latest opinions rather than scraping older opinions that are no longer \\ relevant.\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
 
+In the context of this experiment, sentiment analysis will be used to classify whether opinions found in digital articles are positive or negative towards Apple or Facebook. This classification will then be used to determine whether those companies share prices will rise or fall.
+
+\subsection{Existing studies}
+
+Examples of studies related to this project include research published by Bar-Haim and Feldman. Bar-Haim and Feldman attempted to identify expert investors and collect the content of their microblogs where expert knowledge would be shared. The aim of scraping these blogs was to see if better predictions of the value of a company could be made.  Until then, they had been using a noisy dataset which contained both poor and expert knowledge. This is similar to this projects experiment with the high-level idea of scraping high quality textual information in the hope of making accurate predictions of a company's value. The results concluded that using the expert opinions did cause a rise in accuracy in judging a companies value. More recently, there has been research papers published based on the same idea of using sentiment analysis on news articles. Written by Joshi Kalyani, H. N. Bharathi and Rao Jyothi, the basis of their experiment was collecting years of financial news articles focused on the company Apple. Using these articles they investigated the correlation between the mood towards Apple and the value of their stock. This is similar to what this study hopes to achieve. However,  more general news articles focused on Apple and Facebook will be scraped rather than focusing on financial news.
 
 %-----------------------------------------------------
 % Chapter: Requirement Analysis
 %-----------------------------------------------------
-\chapter{Requirement Analysis}
+\chapter{Requirement analysis}
 \label{chap:requirement-anal}
 
-The requirement analysis stage of a project is important as it presents clear achievable goals and reduces the risk of not delivering during implementation and the design of the project. Within this chapter, I will define both functional and nonfunctional requirements of the research stage. The research stage being the implementation of the pipeline that would test my hypothesis. Also discussed is the requirements created for the application stage of the project. This takes the form of the web platform that was created to illustrate the pipelines predictions and results.
+The requirement analysis stage of a project is important. It presents clear achievable goals and reduces the risk of not delivering during implementation and the design of the project. Within this chapter, both functional and nonfunctional requirements will be defined for both the research stage and the application stage. The research stage is the implementation of the pipeline that would test the experiments hypothesis. The application stage takes the form of a web platform that was created to illustrate the pipelines predictions and results.
 
-\section{Functional Requirements}
+\section{Functional requirements}
 
 Functional requirements refer to what the product should be able to do and what functionality it should provide
 
 \subsection {Research requirements}
 \begin{itemize}
-  \item Implement methods to scrape HTML files found on the Internet
-  \item Implement methods to parse through each HTML page that has been downloaded and extract their textual data.
-	\item Preprocess each parsed HTML file into a readable format for the computer to understand.
-	\item Implement a topic classifier to classify whether an article is talking about Apple / Facebook or the Technology Sector
-	\item Implement multiple machine learning models to extract a sentiment from a given preprocessed article
-	\item Automate analysis of the sentiments collected from the HTML documents when compared against the value of shares
+  \item \textbf{Implement methods to scrape HTML files found on the internet}. The base of the experiment requires digital articles to be downloaded from their sources.
+  \item \textbf{Implement methods to parse through each HTML page that has been downloaded and extract their textual data}. The value of these HTML files is the articles within them. It is important to only extract the useful data for analysis rather than everything found in the file.
+    \item \textbf{Preprocess each parsed HTML file into a readable format for a machine to understand.} When performing NLP tasks, it is normal to preprocess textual information to standardise the data and also turn it into a format that can be analysed by algorithms.
+    \item \textbf{Implement a topic classifier to classify whether an article is talking about Apple / Facebook or the Technology Sector}. It is essential that we classify newly scraped articles into a category so we can accurately track the behaviour of these companies shares.
+    \item \textbf{Implement multiple machine learning models to extract a sentiment from a preprocessed article}. These models should take as input preprocessed news articles and return the sentiment of an article (positive or negative).
+    \item \textbf{Automate analysis of the sentiments collected from the HTML documents when compared against the value of shares}. The analysis needs to be done on an automated scale due to the volume of articles that will be processed every day.
 \end{itemize}
 
 \subsection {Application requirements}
 \begin{itemize}
-  \item Create a platform which displays the share behaviour predictions created by the research stage.
-	\item Create a platform which illustrates the behaviour of the Apple, Facebook and Technology share prices.
-	\item Create a platform that allows users to test each machine learning model developed in the research stage in classifying sentiment.
+  \item \textbf{Create a platform which displays the share behaviour predictions created by the research stage}. This is the main function of the application and will be used to demonstrate the progress and results of my experiment.
+    \item \textbf{Create a platform which illustrates the behaviour of the Apple, Facebook and Technology share prices}. This will provide a graphical representation of how these companies shares are behaving and will ease in the understanding of the context of each prediction.
+    \item \textbf{Create a platform that allows users to test each machine learning model developed in the research stage in classifying sentiment}. This is another important feature of the application and will be used to demonstrate how each machine learning model behaves.
 \end{itemize}
-
-For integrity throughout the project, we considered
-Adjusted Close price as everyday stock price
 
 \section{Nonfunctional requirements}
 Nonfunctional requirements refer to how a system should behave and how the functional requirements should be implemented.
 
 \subsection{Research requirements}
 \begin{itemize}
-	\item Scrape HTML page at a regular time interval
-  \item Should be able to handle a lot of articles at once.
-	\item Have new articles scraped and analysed at a fast speed.
-	\item Track the behaviour of Facebook / Apple / Technology value of a series of time intervals to be able to track changes across it all.
+    \item \textbf{Scrape HTML page at a regular time interval}. This is required due to the results of this experiment being time sensitive and requiring any new articles not to be missed.
+  \item \textbf{Should be able to handle a lot of articles at once}. Alongside scraping at regular time intervals, it is important that the system can handle a large number of articles at a time as there may be in an influx of news released at one point in time.
+    \item \textbf{Have new articles scraped and analysed at a fast speed}. As mentioned, the results of these experiments are time sensitive so it is important to have these analysed at a fast speed to improve accuracy when pinpointing a change in share behaviour.
+    \item \textbf{Track the behaviour of Facebook / Apple / Technology value of a series of time intervals to be able to track changes across it all}. Part of this experiment is seeing how over a series of different time scales that news articles may be affecting the price of shares so it's important to implement this to get good, useful results.
+\end{itemize}
 
 \subsection{Application requirements}
 \begin{itemize}
-	\item The platform should be responsive in design
-	\item The platform should have a interface which can be easily understood and used
+    \item \textbf{The platform should be responsive in design}. This is not essential but is an expected behaviour of websites created in the present day.
+    \item \textbf{The platform should have an interface which can be easily understood and used by users}. When the platform is used, it should not create confusion and avoid frustration.
+\end{itemize}
+
 %-----------------------------------------------------
 % Chapter: Project Plan
 %-----------------------------------------------------
 \chapter{Project Plan}
-\label{chap:project-plan}
+As mentioned previously, this project has two distinct parts. A research section where the hypothesis given within the introduction will be tested and an application section where a web platform will be created to display the results of the experiment. Due to these two parts contrasting, it is important to discuss both separately. At the end of this chapter, a section has been included which explains practices that will be followed in both parts.
+
+\section{Research}
+The research stage was the core of the dissertation and therefore it was sensible to predict that was going to take the majority of the time. After research, planning and a series of discussions with Bill, a blueprint of stages was created which would be followed. Fig blah blah shows the pipeline that was to be created and how the event-driven system was to be run including its triggers.
+
+By breaking up this section into a series of components, it allowed better planning and time management. When meeting weekly with Bill clear deliverables were organised for the next meeting for each section.
+
+\section{Application}
+The application stage came second in priority for this project. This was due to the website content and requirements heavily dependent on the experiment to be started. Just like the research stage, however, it was split into different sections. The main tasks included:
+
+\begin{itemize}
+    \item{Create web server and environment}
+    \item{Create backend processing to get prediction information}
+    \item{Create backend system to test machine learning algorithms created in research stage}
+    \item{Create backbone of web platform including pages and navigation}
+    \item{Create tables and charts using HTML and Javascript}
+    \item{Style each page on site}
+    \item{Add textual content to each page}
+\end{itemize}
+
 
 %-----------------------------------------------------
 % Chapter: Implementation
 %-----------------------------------------------------
 \chapter{Implementation}
-\label{chap:implementation}
 
-\section{Pipeline}
+
+\label{chap:implementation}
 
 \subsection{Web Scraping}
 
